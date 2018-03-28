@@ -58,6 +58,7 @@
 		6341B0D9206BFF54009FDA0A /* CardGame */ = {
 			isa = PBXGroup;
 			children = (
+				6341B0F0206BFF7B009FDA0A /* Models */,
 				6341B0DA206BFF54009FDA0A /* AppDelegate.h */,
 				6341B0DB206BFF54009FDA0A /* AppDelegate.m */,
 				6341B0DD206BFF54009FDA0A /* ViewController.h */,
@@ -69,6 +70,13 @@
 				6341B0E9206BFF54009FDA0A /* main.m */,
 			);
 			path = CardGame;
+			sourceTree = "<group>";
+		};
+		6341B0F0206BFF7B009FDA0A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
