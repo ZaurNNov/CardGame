@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultDescriptionLabel;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardsButtons;
+@property (strong,nonatomic) NSMutableArray *flipsHistory;
+@property (weak, nonatomic) IBOutlet UISlider *historySlider;
+@property (nonatomic) int flipCount;
+@property (weak, nonatomic) IBOutlet UILabel *sliderMaxLabel;
 
 @end
 
@@ -51,6 +55,9 @@ static const int MINIMUM_MATCH_COUNT = 2;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
     }
     [self updateResultDescription];
+    self.historySlider.maximumValue = self.flipCount;
+    [self.historySlider setValue:(float)self.flipCount animated:YES];
+    self.sliderMaxLabel.text = [NSString stringWithFormat:@"%d",(int)ceilf(self.historySlider.maximumValue)];
 }
 
 //helpers
@@ -69,6 +76,7 @@ static const int MINIMUM_MATCH_COUNT = 2;
                         @"✔ +%d bonus", (int)self.game.descriptionLastFlipPoints]];
             }
         } else text = [self textForSingleCard];
+        [self.flipsHistory addObject:text];
     } else text = @"Play game!";
     self.resultDescriptionLabel.text = text;
 }
@@ -77,6 +85,13 @@ static const int MINIMUM_MATCH_COUNT = 2;
 {
     Card *card = [self.game.descriptionMatchedCards lastObject];
     return [NSString stringWithFormat:@"%@ flipped %@", card, (card.isChosen) ? @"up!" : @"back!"];
+}
+
+- (NSMutableArray *)flipsHistory
+{
+    if (!_flipsHistory)
+        _flipsHistory = [[NSMutableArray alloc] init];
+    return _flipsHistory;
 }
 
 -(NSString *)titleForCard: (Card *)card
@@ -93,6 +108,8 @@ static const int MINIMUM_MATCH_COUNT = 2;
 {
     [self segmetControlEnabled];
     self.game = nil;
+    self.flipsHistory = nil;
+    self.flipCount = 0;
     [self updateUI];
 }
 
@@ -116,10 +133,18 @@ static const int MINIMUM_MATCH_COUNT = 2;
     [self resetGame];
 }
 
+- (IBAction)historySliderAction:(UISlider *)sender {
+    int selectedIndex = (int) sender.value;
+    if (selectedIndex < 0 || (selectedIndex > self.flipCount-1)) return;
+    self.resultDescriptionLabel.alpha = (selectedIndex < self.flipCount-1 ) ? 0.5 : 1.0;
+    NSString *text = [NSString stringWithFormat:@"%d:",(selectedIndex+1)];
+    self.resultDescriptionLabel.text = [text stringByAppendingString:[self.flipsHistory objectAtIndex:selectedIndex]];
+}
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
     [self segmetControlDisabled];
+    self.flipCount ++;
     NSUInteger chooseCardButtonIndex = [self.cardsButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chooseCardButtonIndex];
     [self updateUI];
