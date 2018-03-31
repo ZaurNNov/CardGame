@@ -17,6 +17,7 @@
 		6341B0F7206C1367009FDA0A /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341B0F6206C1367009FDA0A /* PlayingCard.m */; };
 		63AB3284206F8FD2005AF225 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AB3283206F8FD2005AF225 /* Deck.m */; };
 		63AB3287206F946F005AF225 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AB3286206F946F005AF225 /* PlayingCardDeck.m */; };
+		63AB328A206FA6D3005AF225 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AB3289206FA6D3005AF225 /* CardMatchingGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		63AB3283206F8FD2005AF225 /* Deck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		63AB3285206F946F005AF225 /* PlayingCardDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		63AB3286206F946F005AF225 /* PlayingCardDeck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		63AB3288206FA6D3005AF225 /* CardMatchingGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
+		63AB3289206FA6D3005AF225 /* CardMatchingGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				63AB3283206F8FD2005AF225 /* Deck.m */,
 				63AB3285206F946F005AF225 /* PlayingCardDeck.h */,
 				63AB3286206F946F005AF225 /* PlayingCardDeck.m */,
+				63AB3288206FA6D3005AF225 /* CardMatchingGame.h */,
+				63AB3289206FA6D3005AF225 /* CardMatchingGame.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				6341B0EA206BFF54009FDA0A /* main.m in Sources */,
 				6341B0DC206BFF54009FDA0A /* AppDelegate.m in Sources */,
 				6341B0F7206C1367009FDA0A /* PlayingCard.m in Sources */,
+				63AB328A206FA6D3005AF225 /* CardMatchingGame.m in Sources */,
 				63AB3287206F946F005AF225 /* PlayingCardDeck.m in Sources */,
 				63AB3284206F8FD2005AF225 /* Deck.m in Sources */,
 				6341B0F4206C117C009FDA0A /* Card.m in Sources */,
