@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Deck.h"
+#import "PlayingCardDeck.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
@@ -18,6 +19,15 @@
 @end
 
 @implementation ViewController
+
+//lazy init Deck plus Playing Cards Deck
+-(Deck *) deck
+{
+    if (!_deck)
+        _deck = [[PlayingCardDeck alloc]init];
+    
+    return _deck;
+}
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
