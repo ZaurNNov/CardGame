@@ -163,6 +163,18 @@
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="xvr-pQ-a33" id="I3O-NP-zzS"/>
+                        <outletCollection property="cardsButtons" destination="9lO-eg-Xv6" id="l6M-vE-W3C"/>
+                        <outletCollection property="cardsButtons" destination="OT6-1Y-TWR" id="YMX-9I-5Z2"/>
+                        <outletCollection property="cardsButtons" destination="AnG-FM-UjA" id="YFh-8n-GxY"/>
+                        <outletCollection property="cardsButtons" destination="fA6-YW-yrW" id="qJG-4N-wVp"/>
+                        <outletCollection property="cardsButtons" destination="Zvt-X6-Ghr" id="sra-eX-fsg"/>
+                        <outletCollection property="cardsButtons" destination="M6A-4X-hz5" id="S1b-3o-AWh"/>
+                        <outletCollection property="cardsButtons" destination="zhE-iK-tgW" id="HSd-RP-ki5"/>
+                        <outletCollection property="cardsButtons" destination="LyX-Fh-pJc" id="woK-3r-RHX"/>
+                        <outletCollection property="cardsButtons" destination="plM-vx-RCg" id="gVP-61-aR0"/>
+                        <outletCollection property="cardsButtons" destination="roe-kr-rQJ" id="ajv-7F-F5C"/>
+                        <outletCollection property="cardsButtons" destination="szZ-FJ-LdF" id="DgQ-sw-E9n"/>
+                        <outletCollection property="cardsButtons" destination="tPF-8K-bO8" id="ptY-8k-COv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

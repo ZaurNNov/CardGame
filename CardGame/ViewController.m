@@ -8,16 +8,33 @@
 
 #import "ViewController.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 @property (nonatomic) Deck *deck;
 
+//new model
+@property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardsButtons;
 
 @end
 
 @implementation ViewController
+
+//lazy init for game
+-(CardMatchingGame *) game
+{
+    if (!_game) _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardsButtons count]
+                                                         usingDeck:[self createDeck]];
+    return _game;
+}
+
+-(Deck *) createDeck
+{
+    return [[PlayingCardDeck alloc]init];
+}
 
 //lazy init Deck plus Playing Cards Deck
 -(Deck *) deck
