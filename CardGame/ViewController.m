@@ -66,6 +66,7 @@ static const int MINIMUM_MATCH_COUNT = 2;
 
 -(void)resetGame
 {
+    [self segmetControlEnabled];
     self.game = nil;
     [self updateUI];
 }
@@ -73,6 +74,16 @@ static const int MINIMUM_MATCH_COUNT = 2;
 -(NSUInteger)numberOfMatchesSwich
 {
     return self.numberOfMatchesSegmentControl.selectedSegmentIndex + MINIMUM_MATCH_COUNT;
+}
+
+-(void)segmetControlEnabled
+{
+    self.numberOfMatchesSegmentControl.enabled = YES;
+}
+
+-(void)segmetControlDisabled
+{
+    self.numberOfMatchesSegmentControl.enabled = NO;
 }
 
 // MARK: Actions
@@ -83,6 +94,7 @@ static const int MINIMUM_MATCH_COUNT = 2;
 
 - (IBAction)touchCardButton:(UIButton *)sender
 {
+    [self segmetControlDisabled];
     NSUInteger chooseCardButtonIndex = [self.cardsButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chooseCardButtonIndex];
     [self updateUI];
