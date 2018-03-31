@@ -35,6 +35,16 @@
     return [[PlayingCardDeck alloc]init];
 }
 
+- (IBAction)dealAction:(UIButton *)sender {
+    [self resetGame];
+}
+
+-(void)resetGame
+{
+    self.game = nil;
+    [self updateUI];
+}
+
 - (IBAction)touchCardButton:(UIButton *)sender
 {
     NSUInteger chooseCardButtonIndex = [self.cardsButtons indexOfObject:sender];
