@@ -13,6 +13,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) Deck *deck;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *numberOfMatchesSegmentControl;
 
 //new model
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -22,36 +23,24 @@
 
 @implementation ViewController
 
-//lazy init for game
--(CardMatchingGame *) game
-{
-    if (!_game) _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardsButtons count]
-                                                         usingDeck:[self createDeck]];
-    return _game;
-}
+static const int MINIMUM_MATCH_COUNT = 2;
 
+//Models
 -(Deck *) createDeck
 {
     return [[PlayingCardDeck alloc]init];
 }
 
-- (IBAction)dealAction:(UIButton *)sender {
-    [self resetGame];
-}
-
--(void)resetGame
+//lazy init for game
+-(CardMatchingGame *) game
 {
-    self.game = nil;
-    [self updateUI];
+    if (!_game) _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardsButtons count]
+                                                         usingDeck:[self createDeck]];
+    _game.numberOfMatchesSwich = [self numberOfMatchesSwich];
+    return _game;
 }
 
-- (IBAction)touchCardButton:(UIButton *)sender
-{
-    NSUInteger chooseCardButtonIndex = [self.cardsButtons indexOfObject:sender];
-    [self.game chooseCardAtIndex:chooseCardButtonIndex];
-    [self updateUI];
-}
-
+//UI action
 -(void) updateUI
 {
     for (UIButton *cardButton in self.cardsButtons) {
@@ -60,14 +49,11 @@
         [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
     }
-    
-    
-    
-    
 }
 
+//helpers
 -(NSString *)titleForCard: (Card *)card
 {
     return card.isChosen ? card.contents : @"";
@@ -76,6 +62,34 @@
 -(UIImage *)backgroundImageForCard: (Card *)card
 {
     return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+}
+
+-(void)resetGame
+{
+    self.game = nil;
+    [self updateUI];
+}
+
+-(NSUInteger)numberOfMatchesSwich
+{
+    return self.numberOfMatchesSegmentControl.selectedSegmentIndex + MINIMUM_MATCH_COUNT;
+}
+
+// MARK: Actions
+- (IBAction)dealAction:(UIButton *)sender {
+    [self resetGame];
+}
+
+
+- (IBAction)touchCardButton:(UIButton *)sender
+{
+    NSUInteger chooseCardButtonIndex = [self.cardsButtons indexOfObject:sender];
+    [self.game chooseCardAtIndex:chooseCardButtonIndex];
+    [self updateUI];
+}
+
+- (IBAction)matchChangesSegmentControlAction:(UISegmentedControl *)sender {
+    [self resetGame];
 }
 
 @end

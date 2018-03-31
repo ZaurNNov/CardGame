@@ -17,5 +17,6 @@
 -(Card *)cardAtindex: (NSUInteger)index;
 
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic) NSUInteger numberOfMatchesSwich;
 
 @end
