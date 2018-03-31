@@ -14,8 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) Deck *deck;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *numberOfMatchesSegmentControl;
-
-//new model
+@property (weak, nonatomic) IBOutlet UILabel *resultDescriptionLabel;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardsButtons;
 
@@ -51,9 +50,35 @@ static const int MINIMUM_MATCH_COUNT = 2;
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
     }
+    [self updateResultDescription];
 }
 
 //helpers
+-(void)updateResultDescription
+{
+    NSString *text= @" ";
+    if ([self.game.descriptionMatchedCards  count] > 0) {
+        text = [text stringByAppendingString:
+                [self.game.descriptionMatchedCards componentsJoinedByString:@" "]];
+        if ([self.game.descriptionMatchedCards count] == [self numberOfMatchesSwich]) {
+            if (self.game.descriptionLastFlipPoints < 0) {
+                text = [text stringByAppendingString:[NSString stringWithFormat:
+                        @"✘ %d penalty", (int)self.game.descriptionLastFlipPoints]];
+            } else {
+                text = [text stringByAppendingString:[NSString stringWithFormat:
+                        @"✔ +%d bonus", (int)self.game.descriptionLastFlipPoints]];
+            }
+        } else text = [self textForSingleCard];
+    } else text = @"Play game!";
+    self.resultDescriptionLabel.text = text;
+}
+
+- (NSString *)textForSingleCard
+{
+    Card *card = [self.game.descriptionMatchedCards lastObject];
+    return [NSString stringWithFormat:@"%@ flipped %@", card, (card.isChosen) ? @"up!" : @"back!"];
+}
+
 -(NSString *)titleForCard: (Card *)card
 {
     return card.isChosen ? card.contents : @"";

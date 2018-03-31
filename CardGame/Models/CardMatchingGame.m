@@ -12,6 +12,7 @@
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray *cards; //of Card
 @property (nonatomic, strong) NSMutableArray *faceUpCards;
+@property (nonatomic, readwrite) NSInteger descriptionLastFlipPoints;
 
 @end
 
@@ -56,7 +57,6 @@ static const int COST_TO_CHOOSE = 1;
 
 -(Card *)cardAtindex: (NSUInteger)index
 {
-    // return self.cards[index];
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
@@ -65,14 +65,12 @@ static const int COST_TO_CHOOSE = 1;
     Card *card = [self cardAtindex:index];
     
     if (!card.isMatched) {
-        
             //if card choosen - set it not choosed!
         if (card.isChosen) {
             card.chosen = NO;
         } else {
-            
-            
             self.faceUpCards = [[NSMutableArray alloc]initWithArray:@[card]];
+            self.descriptionLastFlipPoints = 0;
                 //match against other choosen cards
             for (Card *otherCard in self.cards) {
                 
@@ -82,27 +80,29 @@ static const int COST_TO_CHOOSE = 1;
                     if ([self.faceUpCards count] == (self.numberOfMatchesSwich)) {
                         int matchScore = [card match:self.faceUpCards];
                         if (matchScore) {
-                            self.score += matchScore * MATCH_BONUS;
+                            self.descriptionLastFlipPoints = matchScore * MATCH_BONUS;
+//                            self.score += matchScore * MATCH_BONUS;
                             for (Card *faceUpCard in self.faceUpCards) {
-                                faceUpCard.matched =YES;
+                                faceUpCard.matched = YES;
                             }
-                            
                         } else {
-                            self.score -= MISMATCH_PENALTY;
+                            self.descriptionLastFlipPoints -= MISMATCH_PENALTY;
+//                            self.score -= MISMATCH_PENALTY;
                             for (Card *faceUpCard in self.faceUpCards) {
                                 if (faceUpCard != card) faceUpCard.chosen = NO;
                             }
                         }
+                        self.descriptionMatchedCards = [self.faceUpCards copy];
                         break;
                     }
                 }
             }
-                card.chosen = YES;
-                self.score -= COST_TO_CHOOSE;
-            }
+            
+            self.score += self.descriptionLastFlipPoints - COST_TO_CHOOSE;
+            self.descriptionMatchedCards = [self.faceUpCards copy];
+            card.chosen = YES;
         }
     }
-
-
+}
 
 @end

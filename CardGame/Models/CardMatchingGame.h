@@ -19,4 +19,7 @@
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic) NSUInteger numberOfMatchesSwich;
 
+@property (nonatomic, strong) NSArray *descriptionMatchedCards;
+@property (nonatomic, readonly) NSInteger descriptionLastFlipPoints;
+
 @end
