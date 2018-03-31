@@ -7,9 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "Deck.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) int flipCount;
+@property (nonatomic) Deck *deck;
 
 
 @end
