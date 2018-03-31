@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "Deck.h"
 #import "PlayingCardDeck.h"
 
 @interface ViewController ()
@@ -41,8 +40,8 @@
             [sender setBackgroundImage:[UIImage imageNamed: @"cardfront"]
                               forState:UIControlStateNormal];
             [sender setTitle:card.contents forState:UIControlStateNormal];
+            self.flipCount++;
         }
-        self.flipCount++;
     }
 
 }
