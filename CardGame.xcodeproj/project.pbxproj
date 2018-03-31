@@ -15,6 +15,8 @@
 		6341B0EA206BFF54009FDA0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341B0E9206BFF54009FDA0A /* main.m */; };
 		6341B0F4206C117C009FDA0A /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341B0F3206C117C009FDA0A /* Card.m */; };
 		6341B0F7206C1367009FDA0A /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341B0F6206C1367009FDA0A /* PlayingCard.m */; };
+		63AB3284206F8FD2005AF225 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AB3283206F8FD2005AF225 /* Deck.m */; };
+		63AB3287206F946F005AF225 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AB3286206F946F005AF225 /* PlayingCardDeck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		6341B0F3206C117C009FDA0A /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		6341B0F5206C1367009FDA0A /* PlayingCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
 		6341B0F6206C1367009FDA0A /* PlayingCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
+		63AB3282206F8FD2005AF225 /* Deck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		63AB3283206F8FD2005AF225 /* Deck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		63AB3285206F946F005AF225 /* PlayingCardDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
+		63AB3286206F946F005AF225 /* PlayingCardDeck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,10 @@
 				6341B0F3206C117C009FDA0A /* Card.m */,
 				6341B0F5206C1367009FDA0A /* PlayingCard.h */,
 				6341B0F6206C1367009FDA0A /* PlayingCard.m */,
+				63AB3282206F8FD2005AF225 /* Deck.h */,
+				63AB3283206F8FD2005AF225 /* Deck.m */,
+				63AB3285206F946F005AF225 /* PlayingCardDeck.h */,
+				63AB3286206F946F005AF225 /* PlayingCardDeck.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,7 +125,7 @@
 		6341B0CF206BFF54009FDA0A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Home;
 				TargetAttributes = {
 					6341B0D6206BFF54009FDA0A = {
@@ -164,6 +174,8 @@
 				6341B0EA206BFF54009FDA0A /* main.m in Sources */,
 				6341B0DC206BFF54009FDA0A /* AppDelegate.m in Sources */,
 				6341B0F7206C1367009FDA0A /* PlayingCard.m in Sources */,
+				63AB3287206F946F005AF225 /* PlayingCardDeck.m in Sources */,
+				63AB3284206F8FD2005AF225 /* Deck.m in Sources */,
 				6341B0F4206C117C009FDA0A /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +216,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -211,6 +224,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -259,6 +273,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -266,6 +281,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
